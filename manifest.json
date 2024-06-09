@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "frontmatter-magic",
+	"name": "FrontMatter Magic",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Effortlessly generate and insert Jekyll YAML front matter into your Obsidian notes.",
+	"author": "Abmcar",
+	"authorUrl": "https://abmcar.github.io",
+	"fundingUrl": "https://abmcar.github.io/pricing",
 	"isDesktopOnly": false
 }

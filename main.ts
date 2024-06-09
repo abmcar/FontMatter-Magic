@@ -1,20 +1,37 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
-
+import { App, Editor, MarkdownView, Modal, Menu, moment, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 // Remember to rename these classes and interfaces!
 
-interface MyPluginSettings {
+interface FrontMatterMagicSettings {
 	mySetting: string;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
+const DEFAULT_SETTINGS: FrontMatterMagicSettings = {
 	mySetting: 'default'
 }
 
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class FrontMatterMagic extends Plugin {
+	settings: FrontMatterMagicSettings;
 
 	async onload() {
 		await this.loadSettings();
+		// this.app.vault.file
+		const insertFrontMatter = (editor: Editor, view: MarkdownView) => {
+			editor.replaceRange(
+				'---' + '\n' +
+				'layout: post' + '\n' + 
+				'title: \"' + view.file?.name + '\"\n' +
+				'date: ' + moment().format("YYYY-MM-DD") + '\n' +
+				'---' + '\n',
+				{ch:0,line:0})
+		}
+
+		this.addCommand({
+			id: 'insert-frontmatter-command',
+			name: 'Insert frontmatter command',
+			editorCallback: (editor: Editor, view: MarkdownView) => {
+				insertFrontMatter(editor, view)
+			}
+		})
 
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
@@ -97,26 +114,26 @@ class SampleModal extends Modal {
 	}
 
 	onOpen() {
-		const {contentEl} = this;
+		const { contentEl } = this;
 		contentEl.setText('Woah!');
 	}
 
 	onClose() {
-		const {contentEl} = this;
+		const { contentEl } = this;
 		contentEl.empty();
 	}
 }
 
 class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: FrontMatterMagic;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: FrontMatterMagic) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
 
 	display(): void {
-		const {containerEl} = this;
+		const { containerEl } = this;
 
 		containerEl.empty();
 
