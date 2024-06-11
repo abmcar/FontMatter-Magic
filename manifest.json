@@ -1,7 +1,7 @@
 {
 	"id": "frontmatter-magic",
 	"name": "FrontMatter Magic",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.15.0",
 	"description": "Effortlessly generate and insert Jekyll YAML front matter into your Obsidian notes.",
 	"author": "Abmcar",
