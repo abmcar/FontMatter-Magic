@@ -42,9 +42,7 @@ export default class FrontMatterMagic extends Plugin {
 						}
 					}
 					if (endIdx != -1) {
-						for (let i = 0; i <= endIdx; i++) {
-							editor.setLine(i, "");
-						}
+						editor.replaceRange('', { line: 0, ch: 0 }, { line: 1 + endIdx, ch: 0 })
 						view.file.vault.rename(view.file, baseFileName + ".md")
 						editor.redo;
 						return;
