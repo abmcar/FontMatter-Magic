@@ -1,3 +1,9 @@
+# 简介
+这是一个Obsidian插件，可以为文件插入Jekyll文章使用的Front matter并修改文件名。
+
+使用命令Insert front matter （快捷键：Ctrl + Shift + ;）即可在文件头插入Front matter。并修改文件名为Jekyll格式，再次使用命令即可删除Front matter，并恢复文件名。
+
+
 # Obsidian Sample Plugin
 
 This is a sample plugin for Obsidian (https://obsidian.md).
