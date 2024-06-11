@@ -45,6 +45,7 @@ export default class FrontMatterMagic extends Plugin {
 						for (let i = 0; i <= endIdx; i++) {
 							editor.setLine(i, "");
 						}
+						view.file.vault.rename(view.file, baseFileName + ".md")
 						editor.redo;
 						return;
 					}
